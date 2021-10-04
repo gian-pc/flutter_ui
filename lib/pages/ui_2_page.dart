@@ -7,6 +7,39 @@ class UI2Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
+      // body: GridView.builder(
+      //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+      //     crossAxisCount: 2,
+      //   ),
+      //   itemCount: 13,
+      //   itemBuilder: (BuildContext context, int index){
+      //     return buildContainerItem();
+      //   },
+      // ),
+
+      // body: GridView.count(
+      //   crossAxisCount: 2,
+      //   crossAxisSpacing: 20,
+      //   primary: false,
+      //   scrollDirection: Axis.vertical,
+      //   children: [
+      //     Container(
+      //       height: 100,
+      //       width: 100,
+      //       color: Colors.redAccent,
+      //     ),
+      //     Container(
+      //       height: 100,
+      //       width: 100,
+      //       color: Colors.greenAccent,
+      //     ),
+      //     buildContainerItem(),
+      //     buildContainerItem(),
+      //     buildContainerItem()
+      //   ],
+      // ),
+      
       body: Stack(
         children: [
           buildBackground(),
@@ -14,39 +47,28 @@ class UI2Page extends StatelessWidget {
             child: Column(
               children: [
                 buildTitle(),
-                Table(
-                  children: [
-                    TableRow(
-                      children: [
-                        buildContainerItem(),
-                        buildContainerItem(),
-                      ],
-                    ),
-                    TableRow(
-                      children: [
-                        buildContainerItem(),
-                        buildContainerItem(),
-                      ],
-                    ),
-                    TableRow(
-                      children: [
-                        buildContainerItem(),
-                        buildContainerItem(),
-                      ],
-                    ),
-                    TableRow(
-                      children: [
-                        buildContainerItem(),
-                        buildContainerItem(),
-                      ],
-                    ),
-                  ],
-                )
+                // Text("List Item"),
+                // Text("List Item"),
+                GridView.builder(
+                  shrinkWrap: true,
+                  primary: false,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2
+                  ),
+                  itemCount: 13,
+                  itemBuilder: (BuildContext context, int index){
+                    return buildContainerItem();
+                  },
+                ),
+                // Text("List Item"),
+                // Text("List Item"),
               ],
             ),
           ),
         ],
       ),
+      
+      
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Color(0xff23253A),
         selectedItemColor: Color(0xffFF4181),
@@ -62,12 +84,43 @@ class UI2Page extends StatelessWidget {
     );
   }
 
+  Table buildTable() {
+    return Table(
+                children: [
+                  TableRow(
+                    children: [
+                      buildContainerItem(),
+                      buildContainerItem(),
+                    ],
+                  ),
+                  TableRow(
+                    children: [
+                      buildContainerItem(),
+                      buildContainerItem(),
+                    ],
+                  ),
+                  TableRow(
+                    children: [
+                      buildContainerItem(),
+                      buildContainerItem(),
+                    ],
+                  ),
+                  TableRow(
+                    children: [
+                      buildContainerItem(),
+                      buildContainerItem(),
+                    ],
+                  ),
+                ],
+              );
+  }
+
   Container buildContainerItem() {
     return Container(
       height: 180,
       margin: EdgeInsets.all(16),
       decoration: BoxDecoration(
-          color: Color(0xff515593).withOpacity(0.75),
+          color: Color(0xff515593).withOpacity(0.60),
           borderRadius: BorderRadius.circular(20)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
